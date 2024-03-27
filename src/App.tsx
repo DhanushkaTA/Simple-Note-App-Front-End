@@ -1,6 +1,7 @@
 import './App.css'
 import Header from "./components/header/Header.tsx";
 import LoginView from "./view/LoginView.tsx";
+import NotesView from "./view/NotesView.tsx";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
           <Header/>
           <Routes>
               <Route path={'/'} element={<LoginView/>}/>
+              <Route path={'/notes'} element={<NotesView/>}/>
           </Routes>
 
       </BrowserRouter>

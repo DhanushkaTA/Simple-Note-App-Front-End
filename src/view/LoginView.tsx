@@ -2,6 +2,7 @@ import Input from "../components/input/input.tsx";
 import {useState} from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 
 function LoginView() {
 
@@ -9,6 +10,8 @@ function LoginView() {
     const [password, setPassword] = useState("")
 
     const [isShow, setIsShow] = useState(false)
+
+    const navigate = useNavigate();
 
     const handleInput = (e:any, type:string):void => {
 
@@ -40,6 +43,8 @@ function LoginView() {
 
                 Cookies.set('token', res.data.data.accessToken, { expires: 7 })
                 Cookies.set('user', JSON.stringify(res.data.data.user), { expires: 7 })
+
+                navigate('/notes')
 
                 // console.log(res.data)
 

@@ -3,7 +3,7 @@ import { IoLogOut } from "react-icons/io5";
 function Header() {
     return(
         <header
-            className={"h-[8vh] sticky top-0 left-0 bg-[#F5F5F5] " +
+            className={"h-[8vh] relative bg-[#F5F5F5] " +
                 "px-5 py-1 flex flex-row items-center justify-between"}>
 
             <div className={"h-full"}>
