@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        Lex:['Lexend'],
+        Poppins:['Poppins'],
+        Zet:['Lexend Zetta'],
+        Nunito:['Nunito'],
+        Euclid:['Euclid Circular A']
+      }
+    },
   },
   plugins: [],
 }

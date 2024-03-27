@@ -1,10 +1,10 @@
 import './App.css'
-
+import Header from "./components/header/Header.tsx";
 function App() {
 
   return (
     <>
-      <h1>Note App</h1>
+      <Header/>
     </>
   )
 
