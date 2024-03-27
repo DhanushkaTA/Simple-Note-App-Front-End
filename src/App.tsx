@@ -1,17 +1,26 @@
 import './App.css'
 import Header from "./components/header/Header.tsx";
 import LoginView from "./view/LoginView.tsx";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+
 function App() {
 
   return (
-    <section className={"flex flex-col"}>
-      <Header/>
+      <BrowserRouter>
+          <Header/>
+          <Routes>
+              <Route path={'/'} element={<LoginView/>}/>
+          </Routes>
 
-      <section>
-          <LoginView/>
-      </section>
-
-    </section>
+      </BrowserRouter>
+    // <section className={"flex flex-col"}>
+    //   <Header/>
+    //
+    //   <section>
+    //       <LoginView/>
+    //   </section>
+    //
+    // </section>
   )
 
 }
