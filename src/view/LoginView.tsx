@@ -4,7 +4,11 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 
-function LoginView() {
+interface Props {
+    isLogin:Function
+}
+
+function LoginView(prop:Props) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -44,7 +48,8 @@ function LoginView() {
                 Cookies.set('token', res.data.data.accessToken, { expires: 7 })
                 Cookies.set('user', JSON.stringify(res.data.data.user), { expires: 7 })
 
-                navigate('/notes')
+                prop.isLogin(true)
+                navigate('/')
 
                 // console.log(res.data)
 
@@ -88,7 +93,7 @@ function LoginView() {
                             callBack={handleInput}/>
                     </div>
 
-                    <div className={"mb-5"}>
+                    <div className={"mb-4"}>
                         <Input
                             type={`${isShow ? "text" : "password"}`}
                             name={"password"}

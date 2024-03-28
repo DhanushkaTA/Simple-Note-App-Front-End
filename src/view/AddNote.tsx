@@ -110,7 +110,7 @@ function AddNote() {
                         text: res.data.message,
                         icon: "success"
                     });
-                    navigate('/notes')
+                    navigate('/')
                 })
                 .catch(err => {
                     console.log(err)
@@ -127,7 +127,7 @@ function AddNote() {
                         text: res.data.message,
                         icon: "success"
                     });
-                    navigate('/notes')
+                    navigate('/')
                 })
                 .catch( err => {
                     console.log(err)
@@ -143,7 +143,7 @@ function AddNote() {
 
             <div className={"fixed bottom-10 sm:bottom-10 md:top-[100px] left-10 " +
                 " w-max h-max p-2 bg-black drop-shadow-md text-white rounded-md hover:cursor-pointer"}
-                 onClick={() => navigate('/notes')} >
+                 onClick={() => navigate('/')} >
                 <IoMdArrowRoundBack size={25}/>
             </div>
 

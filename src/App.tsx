@@ -4,15 +4,18 @@ import LoginView from "./view/LoginView.tsx";
 import NotesView from "./view/NotesView.tsx";
 import AddNote from "./view/AddNote.tsx";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
+import {useState} from "react";
 
 function App() {
 
+    const [islog, setIslog] = useState(false)
+
   return (
       <BrowserRouter>
-          <Header/>
+          <Header log={islog}/>
           <Routes>
-              <Route path={'/'} element={<LoginView/>}/>
-              <Route path={'/notes'} element={<NotesView/>}/>
+              <Route path={'/login'} element={<LoginView isLogin={setIslog}/>}/>
+              <Route path={'/'} element={<NotesView/>}/>
               <Route path={'/add'} element={<AddNote/>}/>
           </Routes>
 

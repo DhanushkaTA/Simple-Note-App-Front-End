@@ -24,7 +24,14 @@ function NotesView() {
     let navigate = useNavigate();
 
     useEffect(() => {
-        getData();
+
+        const token = Cookies.get('token');
+
+        if (!token) {
+            navigate('/login');
+        } else {
+            getData();
+        }
     }, []);
 
     useEffect(() => {
