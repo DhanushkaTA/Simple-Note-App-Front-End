@@ -13,7 +13,7 @@ function Card() {
 
                 <div className={"w-full h-[0px] group-hover:h-[50px] transition-all bg-gradient-to-b from-0% from-red-600/20 to-transparent flex items-center justify-center rounded-b-[50%] "}>
 
-                    <MdDelete size={22} className={"opacity-0 group-hover:opacity-100 "} onClick={() => alert("123")}/>
+                    <MdDelete size={22} className={"opacity-0 group-hover:opacity-100 text-red-600"} onClick={() => alert("123")}/>
 
                 </div>
 
