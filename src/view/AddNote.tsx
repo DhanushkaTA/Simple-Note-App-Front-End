@@ -12,10 +12,12 @@ function AddNote() {
 
     let location = useLocation();
     const note =location?.state?.note;
+    const isView =location?.state?.view;
 
     const [title, setTitle] = useState(note ? note.title :"Create Note")
 
     const [description, setDescription] = useState(note ? note.description :"")
+
 
     let navigate = useNavigate();
 
@@ -143,8 +145,7 @@ function AddNote() {
 
                     <div className={"mt-5 w-full"}>
 
-                        <button className={"text-white bg-black py-2 px-4  rounded-md " +
-                            "flex flex-row gap-1 items-center justify-center hover:bg-gray-300 hover:text-black ml-auto"}
+                        <button className={`${isView ? "hidden" : "flex"} text-white bg-black py-2 px-4 rounded-md flex-row gap-1 items-center justify-center hover:bg-gray-300 hover:text-black ml-auto`}
                             onClick={saveNote}>
                             <IoIosSave size={20}/> Save</button>
 

@@ -116,8 +116,8 @@ function NotesView() {
 
     }
 
-    function aleert(id: string) {
-        alert(id)
+    function viewNote(noteData: any) {
+        navigate('/add',{state:{note:noteData,view:true}})
     }
 
     return(
@@ -156,7 +156,7 @@ function NotesView() {
                             note={value}
                             deleteFunction={deleteNote}
                             editeFunction={editeNote}
-                            viewFunction={aleert}
+                            viewFunction={viewNote}
                         />
                     })
                 }
