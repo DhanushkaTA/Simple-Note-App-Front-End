@@ -79,7 +79,7 @@ function LoginView() {
 
                 <div className={"mb-5"}>
 
-                    <div>
+                    <div className={"mb-2"}>
                         <Input
                             type={"text"}
                             name={"email"}
@@ -88,7 +88,7 @@ function LoginView() {
                             callBack={handleInput}/>
                     </div>
 
-                    <div>
+                    <div className={"mb-5"}>
                         <Input
                             type={`${isShow ? "text" : "password"}`}
                             name={"password"}

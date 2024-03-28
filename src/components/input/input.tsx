@@ -15,7 +15,7 @@ class Input extends React.Component<Props, any>{
     render() {
         return(
 
-            <div className={'mb-2 w-full mx-1'}>
+            <div className={'mb-0 w-full mx-1'}>
                 <label htmlFor={this.props.name} className={'block text-black text-[15px] font-[500] mb-0.5'}>
                     {this.props.label}{!this.props.optional ? <span className={'text-red-600'}> *</span> : null }</label>
                 <input

@@ -1,10 +1,44 @@
 import Card from "../components/card/Card.tsx";
 import { IoMdAdd } from "react-icons/io";
+import Input from "../components/input/input.tsx";
+import {CiSearch} from "react-icons/ci";
+import {useState} from "react";
+
 
 function NotesView() {
 
+    const [search, setSearch] = useState("")
+
+    const handleInput = (e:any, type:string):void => {
+
+        switch (type){
+            case 'search':
+                setSearch(e.target.value)
+                break;
+
+        }
+    }
+
     return(
-        <section className={"min-h-[92vh] max-h-max bg-[#F5F5F5] flex items-center justify-center"}>
+        <section className={"relative min-h-[92vh] max-h-max bg-[#F5F5F5] flex items-center justify-center flex-col"}>
+
+            <div
+                className={"sticky z-50 top-5 bg-white w-[80%] sm:w-[80%] md:w-[80%] lg:w-[30rem] h-[50px] drop-shadow-xl rounded-md flex flex-row items-center justify-center"}>
+
+                <div className={"w-[88%]"}>
+                    <Input
+                        type={"text"}
+                        name={"search"}
+                        label={""}
+                        optional={true}
+                        placeholder={"Search here ..."}
+                        callBack={handleInput}/>
+                </div>
+
+                <div className={"flex-1 flex items-center justify-center"}>
+                    <CiSearch string={40}/>
+                </div>
+            </div>
 
 
             <main
