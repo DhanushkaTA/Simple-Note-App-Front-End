@@ -27,6 +27,14 @@ function NotesView() {
         getData();
     }, []);
 
+    useEffect(() => {
+        if (search) {
+            searchNote();
+        }else {
+            getData()
+        }
+    }, [search]);
+
     const handleInput = (e:any, type:string):void => {
 
         switch (type){
@@ -49,6 +57,31 @@ function NotesView() {
         axios.get('http://localhost:9001/note/get/all',config)
             .then(res => {
 
+
+                console.log(res.data.data)
+                setDataArray(res.data.data)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+    }
+
+
+    function searchNote() {
+
+        const config = {
+            headers: {
+                'Authorization': Cookies.get('token')
+            }
+        };
+
+        // @ts-ignore
+        axios.get(`http://localhost:9001/note/get/note?title=${search}`,config)
+            .then(res => {
+
+                console.log(res.data.data)
                 setDataArray(res.data.data)
 
             })
