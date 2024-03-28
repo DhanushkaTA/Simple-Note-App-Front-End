@@ -13,7 +13,7 @@ interface Data {
     user:string,
     title:string,
     description:string,
-    date:string
+    date:Date
 }
 
 function NotesView() {
@@ -24,7 +24,7 @@ function NotesView() {
     let navigate = useNavigate();
 
     useEffect(() => {
-
+        getData();
     }, []);
 
     const handleInput = (e:any, type:string):void => {
@@ -52,6 +52,9 @@ function NotesView() {
                 setDataArray(res.data.data)
 
             })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
 
@@ -78,22 +81,22 @@ function NotesView() {
 
 
             <main
-                className={"p-4 max-w-[900px] w-full sm:w-full md:w-full lg:w-[900px] xl:w-[900px] h-full max-h-max bg-[#F5F5F5] " +
+                className={"p-4 max-w-[900px] w-full sm:w-full md:w-full lg:w-[900px] xl:w-[900px] min-h-[92vh] h-full max-h-max bg-[#F5F5F5] " +
                     " grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-3 items-center"}>
 
 
                 {
-
+                    dataArray.map(value => {
+                        return <Card
+                            id={value._id}
+                            title={value.title}
+                            date={value.date}
+                        />
+                    })
                 }
 
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+
+
 
             </main>
 
