@@ -61,7 +61,7 @@ function NotesView() {
         };
 
         // @ts-ignore
-        axios.get('http://localhost:9001/note/get/all',config)
+        axios.get('https://simple-note-app-back-end.onrender.com/note/get/all',config)
             .then(res => {
 
 
@@ -85,7 +85,7 @@ function NotesView() {
         };
 
         // @ts-ignore
-        axios.get(`http://localhost:9001/note/get/note?title=${search}`,config)
+        axios.get(`https://simple-note-app-back-end.onrender.com/note/get/note?title=${search}`,config)
             .then(res => {
 
                 console.log(res.data.data)
@@ -130,7 +130,7 @@ function NotesView() {
         };
 
         // @ts-ignore
-        axios.delete(`http://localhost:9001/note/delete/${id}`,config)
+        axios.delete(`https://simple-note-app-back-end.onrender.com/note/delete/${id}`,config)
             .then(res => {
                 // alert(res.data.message)
 

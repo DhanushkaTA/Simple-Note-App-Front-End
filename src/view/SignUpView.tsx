@@ -101,7 +101,7 @@ function SignUpView() {
         });
 
 
-        axios.post('http://localhost:9001/user/save',data,config)
+        axios.post('https://simple-note-app-back-end.onrender.com/user/save',data,config)
             .then(res => {
                 Swal.fire({
                     title: "saved!",

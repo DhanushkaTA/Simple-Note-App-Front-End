@@ -102,7 +102,7 @@ function AddNote() {
             });
 
             // @ts-ignore
-            axios.put('http://localhost:9001/note/update',update_data,config)
+            axios.put('https://simple-note-app-back-end.onrender.com/note/update',update_data,config)
                 .then(res => {
                     // alert(res.data.message)
                     Swal.fire({
@@ -118,7 +118,7 @@ function AddNote() {
                 })
         } else {
             // @ts-ignore
-            axios.post('http://localhost:9001/note/save',data,config)
+            axios.post('https://simple-note-app-back-end.onrender.com/note/save',data,config)
                 .then( res => {
 
                     // alert(res.data.message)

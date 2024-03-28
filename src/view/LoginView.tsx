@@ -42,7 +42,7 @@ function LoginView(prop:Props) {
             password: password
         })
 
-        axios.post("http://localhost:9001/user/auth",data,config)
+        axios.post("https://simple-note-app-back-end.onrender.com/user/auth",data,config)
             .then(res => {
 
                 Cookies.set('token', res.data.data.accessToken, { expires: 7 })
