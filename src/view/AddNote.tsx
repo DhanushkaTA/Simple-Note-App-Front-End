@@ -7,6 +7,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { IoIosSave } from "react-icons/io";
 import Cookies from "js-cookie";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function AddNote() {
 
@@ -27,9 +28,9 @@ function AddNote() {
 
     useEffect(() => {
 
-        if (!title){
-            setTitle("Create Note")
-        }
+        // if (!title){
+        //     setTitle("Create Note")
+        // }
 
     }, [title]);
 
@@ -47,6 +48,28 @@ function AddNote() {
 
     function saveNote() {
 
+
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "rgba(0,0,0,0.86)",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, save it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+               saveAction()
+
+            }
+        });
+
+
+    }
+
+    function saveAction() {
         const config = {
             headers: {
                 'Authorization': Cookies.get('token'),
@@ -81,7 +104,12 @@ function AddNote() {
             // @ts-ignore
             axios.put('http://localhost:9001/note/update',update_data,config)
                 .then(res => {
-                    alert(res.data.message)
+                    // alert(res.data.message)
+                    Swal.fire({
+                        title: "saved!",
+                        text: res.data.message,
+                        icon: "success"
+                    });
                     navigate('/notes')
                 })
                 .catch(err => {
@@ -93,7 +121,12 @@ function AddNote() {
             axios.post('http://localhost:9001/note/save',data,config)
                 .then( res => {
 
-                    alert(res.data.message)
+                    // alert(res.data.message)
+                    Swal.fire({
+                        title: "Saved!",
+                        text: res.data.message,
+                        icon: "success"
+                    });
                     navigate('/notes')
                 })
                 .catch( err => {
@@ -101,8 +134,6 @@ function AddNote() {
                     alert("Something is wrong")
                 })
         }
-
-
 
     }
 
@@ -120,7 +151,7 @@ function AddNote() {
                 "h-full max-h-max min-h-[92vh] bg-[#F5F5F5]"}>
                 {/**/}
 
-                <h1 className={"font-Lex font-[500] text-4xl text-center w-full m-auto"}>{title}</h1>
+                <h1 className={"font-Lex font-[500] text-4xl text-center w-full m-auto"}>{title ? title : "Create Note"}</h1>
 
                 <div className={"mt-5"} >
                     <div className={"mb-3"}>

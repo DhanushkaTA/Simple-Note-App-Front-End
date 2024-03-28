@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 
 interface Data {
     _id:string,
@@ -92,6 +92,30 @@ function NotesView() {
     }
 
     function deleteNote(id:string) {
+
+
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "rgba(0,0,0,0.86)",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                deleteAction(id)
+
+            }
+        });
+
+
+
+    }
+
+    function deleteAction(id:string) {
         const config = {
             headers: {
                 'Authorization': Cookies.get('token')
@@ -101,7 +125,14 @@ function NotesView() {
         // @ts-ignore
         axios.delete(`http://localhost:9001/note/delete/${id}`,config)
             .then(res => {
-                alert(res.data.message)
+                // alert(res.data.message)
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: res.data.message,
+                    icon: "success"
+                });
+
                 getData()
             })
             .catch(err => {
