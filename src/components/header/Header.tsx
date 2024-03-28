@@ -6,20 +6,24 @@ import {useEffect, useState} from "react";
 
 interface Props {
     log:boolean
+    loginFunction:Function
 }
 
 function Header(prop:Props) {
+
     let navigate = useNavigate();
-    const [isLogin, setIsLogin] = useState(false);
+
+    // const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(prop.log);
 
     useEffect(() => {
-        const token = Cookies.get('token');
-
-        if (!token) {
-           setIsLogin(false)
-        } else {
-            setIsLogin(true)
-        }
+        // const token = Cookies.get('token');
+        //
+        // if (!token) {
+        //    setIsLogin(false)
+        // } else {
+        //     setIsLogin(true)
+        // }
     }, []);
 
     useEffect(() => {

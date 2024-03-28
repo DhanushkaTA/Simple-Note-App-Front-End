@@ -50,7 +50,7 @@ function LoginView(prop:Props) {
 
                 prop.isLogin(true)
                 navigate('/')
-
+                window.location.reload();
                 // console.log(res.data)
 
             })
