@@ -91,8 +91,24 @@ function NotesView() {
 
     }
 
+    function deleteNote(id:string) {
+        const config = {
+            headers: {
+                'Authorization': Cookies.get('token')
+            }
+        };
 
-
+        // @ts-ignore
+        axios.delete(`http://localhost:9001/note/delete/${id}`,config)
+            .then(res => {
+                alert(res.data.message)
+                getData()
+            })
+            .catch(err => {
+                console.log(err)
+                alert("Something went wrong!")
+            })
+    }
 
     function aleert(id: string) {
         alert(id)
@@ -131,7 +147,7 @@ function NotesView() {
                             id={value._id}
                             title={value.title}
                             date={value.date}
-                            deleteFunction={aleert}
+                            deleteFunction={deleteNote}
                             editeFunction={aleert}
                             viewFunction={aleert}
                         />
