@@ -67,17 +67,42 @@ function AddNote() {
 
         console.log(data)
 
-        // @ts-ignore
-        axios.post('http://localhost:9001/note/save',data,config)
-            .then( res => {
 
-                alert(res.data.message)
-                navigate('/notes')
-            })
-            .catch( err => {
-                console.log(err)
-                alert("Something is wrong")
-            })
+
+        if (note){
+            let update_data = JSON.stringify({
+                _id:note._id,
+                user:JSON.parse(user_data).email,
+                title:title,
+                description:description,
+                date:note.date
+            });
+
+            // @ts-ignore
+            axios.put('http://localhost:9001/note/update',update_data,config)
+                .then(res => {
+                    alert(res.data.message)
+                    navigate('/notes')
+                })
+                .catch(err => {
+                    console.log(err)
+                    alert("Something is wrong")
+                })
+        } else {
+            // @ts-ignore
+            axios.post('http://localhost:9001/note/save',data,config)
+                .then( res => {
+
+                    alert(res.data.message)
+                    navigate('/notes')
+                })
+                .catch( err => {
+                    console.log(err)
+                    alert("Something is wrong")
+                })
+        }
+
+
 
     }
 
@@ -114,11 +139,6 @@ function AddNote() {
 
                         <CKEditor
                             editor={ClassicEditor}
-                            // config={ {
-                            //     plugins: [ Paragraph, Bold, Italic, Essentials ],
-                            //     toolbar: [ 'bold', 'italic' ]
-                            // } }
-                            // config={ editorConfiguration }
                             data={description}
                             onReady={editor => {
                                 // You can store the "editor" and use when it is needed.
