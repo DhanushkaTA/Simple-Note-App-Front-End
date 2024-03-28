@@ -2,7 +2,7 @@ import Input from "../components/input/input.tsx";
 import {useState} from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 interface Props {
     isLogin:Function
@@ -124,8 +124,8 @@ function LoginView(prop:Props) {
                         <div className={'text-gray-400 my-1 text-center'}>or</div>
                         <div className={'text-gray-400 text-[14px] text-center'}>Do not have an account ?
                             <span className={'text-black underline pl-1 hover:cursor-pointer'}>
-                                Sign ip here
-                                {/*<Link to={'/signup'}> Sign ip here</Link>*/}
+                                {/*Sign ip here*/}
+                                <Link to={'/signup'}> Sign ip here</Link>
                             </span>
                         </div>
 
