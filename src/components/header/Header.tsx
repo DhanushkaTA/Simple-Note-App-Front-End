@@ -63,7 +63,7 @@ function Header(prop:Props) {
 
             <div className={"h-full"}>
 
-                <img src={"../src/assets/image/logo/Logo.jpeg"} className={"h-full"}  alt={"logo"}/>
+                <img src={"src/assets/image/logo/Logo.jpeg"} className={"h-full"}  alt={"logo"}/>
 
             </div>
 

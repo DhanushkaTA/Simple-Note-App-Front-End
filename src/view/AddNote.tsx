@@ -141,7 +141,7 @@ function AddNote() {
     return(
         <section className={"relative min-h-[92vh] max-h-max bg-[#F5F5F5] flex items-center justify-center flex-col"}>
 
-            <div className={"fixed bottom-10 sm:bottom-10 md:top-[100px] left-10 " +
+            <div className={"fixed z-[2000] bottom-10 sm:bottom-10 md:top-[100px] left-10 " +
                 " w-max h-max p-2 bg-black drop-shadow-md text-white rounded-md hover:cursor-pointer"}
                  onClick={() => navigate('/')} >
                 <IoMdArrowRoundBack size={25}/>
