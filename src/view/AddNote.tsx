@@ -1,7 +1,7 @@
 import Input from "../components/input/input.tsx";
 import {useEffect, useState} from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { IoIosSave } from "react-icons/io";
@@ -10,11 +10,18 @@ import axios from "axios";
 
 function AddNote() {
 
-    const [title, setTitle] = useState("Create Note")
+    let location = useLocation();
+    const note =location?.state?.note;
 
-    const [description, setDescription] = useState("")
+    const [title, setTitle] = useState(note ? note.title :"Create Note")
+
+    const [description, setDescription] = useState(note ? note.description :"")
 
     let navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(note)
+    }, []);
 
     useEffect(() => {
 
@@ -95,6 +102,7 @@ function AddNote() {
                             name={"title"}
                             label={"Title"}
                             optional={false}
+                            value={title}
                             callBack={handleInput}/>
                     </div>
 
@@ -109,7 +117,7 @@ function AddNote() {
                             //     toolbar: [ 'bold', 'italic' ]
                             // } }
                             // config={ editorConfiguration }
-                            data={""}
+                            data={description}
                             onReady={editor => {
                                 // You can store the "editor" and use when it is needed.
                                 console.log('Editor is ready to use!', editor);

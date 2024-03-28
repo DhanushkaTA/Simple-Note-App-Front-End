@@ -6,6 +6,7 @@ interface Props {
     id:string,
     title:string,
     date:Date,
+    note:any,
     deleteFunction:Function,
     editeFunction:Function,
     viewFunction:Function
@@ -37,7 +38,7 @@ function Card(prop:Props) {
 
             <div className={"absolute bottom-3 right-3 bg-black p-2 w-max rounded-md text-white" +
                 " hover:bg-[#D0D1D3]  hover:text-black"}
-                 onClick={() => prop.editeFunction(prop.id)}>
+                 onClick={() => prop.editeFunction(prop.note)}>
 
                 <TbEdit size={20}/>
 
@@ -46,7 +47,7 @@ function Card(prop:Props) {
             <div className={"w-full h-full overflow-hidden"}>
 
                 <div className={"text-black font-Lex text-2xl font-[600] w-full h-full text-ellipsis  overflow-hidden"}
-                     onClick={() => prop.viewFunction(prop.id)}>
+                     onClick={() => prop.viewFunction(prop.note)}>
 
                     {prop.title}
 

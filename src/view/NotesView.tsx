@@ -110,6 +110,12 @@ function NotesView() {
             })
     }
 
+    function editeNote(noteData:any) {
+
+        navigate('/add',{state:{note:noteData}})
+
+    }
+
     function aleert(id: string) {
         alert(id)
     }
@@ -147,8 +153,9 @@ function NotesView() {
                             id={value._id}
                             title={value.title}
                             date={value.date}
+                            note={value}
                             deleteFunction={deleteNote}
-                            editeFunction={aleert}
+                            editeFunction={editeNote}
                             viewFunction={aleert}
                         />
                     })
