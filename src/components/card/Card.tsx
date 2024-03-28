@@ -5,7 +5,10 @@ import * as DateHandler from "../../util/dateHandler.ts";
 interface Props {
     id:string,
     title:string,
-    date:Date
+    date:Date,
+    deleteFunction:Function,
+    editeFunction:Function,
+    viewFunction:Function
 }
 
 function Card(prop:Props) {
@@ -18,19 +21,23 @@ function Card(prop:Props) {
 
                 {/**/}
 
-                <div className={"w-full h-[0px] group-hover:h-[50px] transition-all bg-gradient-to-b from-0% from-red-600/20 to-transparent flex items-center justify-center rounded-b-[50%] "}>
+                <div className={"w-full h-[0px] group-hover:h-[50px] transition-all " +
+                    "bg-gradient-to-b from-0% from-red-600/20 to-transparent " +
+                    "flex items-center justify-center rounded-b-[50%] "}
+                >
 
                     <MdDelete
                         size={22}
-                        className={"opacity-0 group-hover:opacity-100 text-red-600"}
-                        onClick={() => alert(prop.id)}/>
+                        className={"opacity-0 group-hover:opacity-100 text-red-600 z-20"}
+                        onClick={() => prop.deleteFunction(prop.id)}/>
 
                 </div>
 
             </div>
 
             <div className={"absolute bottom-3 right-3 bg-black p-2 w-max rounded-md text-white" +
-                " hover:bg-[#D0D1D3]  hover:text-black"}>
+                " hover:bg-[#D0D1D3]  hover:text-black"}
+                 onClick={() => prop.editeFunction(prop.id)}>
 
                 <TbEdit size={20}/>
 
@@ -38,7 +45,8 @@ function Card(prop:Props) {
 
             <div className={"w-full h-full overflow-hidden"}>
 
-                <div className={"text-black font-Lex text-2xl font-[600] w-full h-full text-ellipsis  overflow-hidden"}>
+                <div className={"text-black font-Lex text-2xl font-[600] w-full h-full text-ellipsis  overflow-hidden"}
+                     onClick={() => prop.viewFunction(prop.id)}>
 
                     {prop.title}
 

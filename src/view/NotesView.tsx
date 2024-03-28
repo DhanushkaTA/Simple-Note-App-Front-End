@@ -91,6 +91,13 @@ function NotesView() {
 
     }
 
+
+
+
+    function aleert(id: string) {
+        alert(id)
+    }
+
     return(
         <section className={"relative min-h-[92vh] max-h-max bg-[#F5F5F5] flex items-center justify-center flex-col"}>
 
@@ -124,6 +131,9 @@ function NotesView() {
                             id={value._id}
                             title={value.title}
                             date={value.date}
+                            deleteFunction={aleert}
+                            editeFunction={aleert}
+                            viewFunction={aleert}
                         />
                     })
                 }
